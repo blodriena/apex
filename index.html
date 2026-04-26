@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX — The Future of Finance</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+<canvas id="bg"></canvas>
+ 
+<nav class="nav">
+  <div class="nav-logo" onclick="sp('home')">APEX</div>
+  <div class="nav-links">
+    <a id="nl-home" class="on" onclick="sp('home')">Home</a>
+    <a id="nl-markets" onclick="sp('markets')">Markets</a>
+    <a id="nl-dashboard" onclick="sp('dashboard')">Dashboard</a>
+    <a id="nl-pricing" onclick="sp('pricing')">Pricing</a>
+  </div>
+  <div class="nav-right">
+    <button class="nbtn nbtn-ghost">Sign In</button>
+    <button class="nbtn nbtn-fill">Get Started</button>
+  </div>
+</nav>
+ 
+<div class="page on" id="ph">
+  <section class="hero">
+    <div class="hero-left anim">
+      <div class="hero-chip"><div class="chip-dot"></div><span class="chip-text">Live · 940,000+ traders worldwide</span></div>
+      <h1 class="hero-h1">Finance<br>Meets the<br><span class="g1">Future</span> of<br><span class="g2">Crypto.</span></h1>
+      <p class="hero-p">APEX gives you institutional tools, real-time data, and intelligent automation — all wrapped in the most beautiful trading interface ever built.</p>
+      <div class="hero-btns">
+        <button class="hbtn-main" onclick="sp('dashboard')">Start Trading Free</button>
+        <button class="hbtn-sec" onclick="sp('markets')">Explore Markets →</button>
+      </div>
+      <div class="hero-social-proof">
+        <div class="sp-avatars">
+          <div class="sp-av">JW</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,var(--teal),var(--violet))">SA</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,var(--pink),var(--amber))">MC</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,var(--violet),var(--teal))">+</div>
+        </div>
+        <div class="sp-text">Trusted by <strong>940K+</strong> traders across 42 countries</div>
+      </div>
+    </div>
+    <div class="hero-right anim" style="animation-delay:0.2s;">
+      <div class="live-card">
+        <div class="lc-top">
+          <div class="lc-coin">
+            <div class="lc-icon" style="background:rgba(247,147,26,0.15);color:#f7931a;">₿</div>
+            <div><div class="lc-name">Bitcoin</div><div class="lc-sym">BTC · USDT</div></div>
+          </div>
+          <div class="lc-badge up">+2.41%</div>
+        </div>
+        <div class="lc-price">$67,420.00</div>
+        <div class="lc-chart"><canvas id="hero-chart-btc"></canvas></div>
+        <div class="lc-stats">
+          <div class="lcs"><div class="lcs-label">24H High</div><div class="lcs-val">$68,240</div></div>
+          <div class="lcs"><div class="lcs-label">24H Low</div><div class="lcs-val">$65,800</div></div>
+          <div class="lcs"><div class="lcs-label">Market Cap</div><div class="lcs-val">$1.32T</div></div>
+          <div class="lcs"><div class="lcs-label">Volume</div><div class="lcs-val">$28.4B</div></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="live-card" style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div class="lc-icon" style="width:32px;height:32px;background:rgba(98,126,234,0.15);color:#627eea;font-size:0.9rem;border-radius:8px;">Ξ</div>
+            <div><div style="font-weight:700;font-size:0.82rem;">Ethereum</div><div class="lc-badge up" style="font-size:0.6rem;padding:2px 7px;">+1.8%</div></div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--white);">$3,521</div>
+        </div>
+        <div class="live-card" style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div class="lc-icon" style="width:32px;height:32px;background:rgba(153,69,255,0.15);color:#9945ff;font-size:0.9rem;border-radius:8px;">◎</div>
+            <div><div style="font-weight:700;font-size:0.82rem;">Solana</div><div class="lc-badge up" style="font-size:0.6rem;padding:2px 7px;">+6.2%</div></div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--white);">$182.45</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <div class="stats-row">
+    <div class="sr-card"><div class="sr-icon" style="background:rgba(108,71,255,0.15);">📊</div><div><div class="sr-val">$6.2B</div><div class="sr-label">24H Trading Volume</div></div></div>
+    <div class="sr-card"><div class="sr-icon" style="background:rgba(0,212,170,0.12);">👥</div><div><div class="sr-val">940K+</div><div class="sr-label">Active Traders</div></div></div>
+    <div class="sr-card"><div class="sr-icon" style="background:rgba(255,184,0,0.12);">💎</div><div><div class="sr-val">380+</div><div class="sr-label">Listed Assets</div></div></div>
+    <div class="sr-card"><div class="sr-icon" style="background:rgba(0,230,118,0.1);">🛡️</div><div><div class="sr-val">99.99%</div><div class="sr-label">Platform Uptime</div></div></div>
+  </div>
+ 
+  <section class="features">
+    <div class="feat-header">
+      <span class="feat-tag">// Why APEX?</span>
+      <h2 class="feat-h2">Everything You Need to<br><span>Trade at the Top.</span></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="fc"><span class="fc-num">01</span><span class="fc-emoji">⚡</span><div class="fc-title">Lightning Execution</div><p class="fc-desc">Sub-millisecond order routing with direct access to 8 global liquidity pools. Zero slippage on orders under $500K.</p></div>
+      <div class="fc"><span class="fc-num">02</span><span class="fc-emoji">🧠</span><div class="fc-title">AI-Powered Signals</div><p class="fc-desc">Machine learning models trained on a decade of market data deliver predictive signals with 78% historical accuracy.</p></div>
+      <div class="fc"><span class="fc-num">03</span><span class="fc-emoji">🔐</span><div class="fc-title">Institutional Security</div><p class="fc-desc">95% cold storage, $500M Lloyd's insurance, multi-sig wallets and biometric 2FA. Your assets, always protected.</p></div>
+      <div class="fc"><span class="fc-num">04</span><span class="fc-emoji">📡</span><div class="fc-title">Real-Time Analytics</div><p class="fc-desc">Live portfolio P&L, risk scores, and heat maps. See your entire portfolio in one glance — always up to the second.</p></div>
+      <div class="fc"><span class="fc-num">05</span><span class="fc-emoji">🤖</span><div class="fc-title">Automated Strategies</div><p class="fc-desc">Deploy DCA bots, grid traders, and custom algo strategies — no code required. Set it, forget it, profit.</p></div>
+      <div class="fc"><span class="fc-num">06</span><span class="fc-emoji">🌍</span><div class="fc-title">Global Compliance</div><p class="fc-desc">Regulated in 42 jurisdictions. Full AML/KYC, real-time monitoring, and detailed audit trails for institutions.</p></div>
+    </div>
+  </section>
+ 
+  <section class="testi-section">
+    <div class="feat-header" style="text-align:center;">
+      <span class="feat-tag">// Client Stories</span>
+      <h2 class="feat-h2">Real Traders. <span>Real Results.</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tc"><div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div><p class="tc-text">"APEX's interface is in a completely different league. I've used Bloomberg, Binance, Coinbase Pro — nothing comes close to this level of UX. It's like driving a Ferrari after years of riding a bike."</p><div class="tc-author"><div class="tc-av" style="background:linear-gradient(135deg,var(--violet),var(--pink));">JW</div><div><div class="tc-name">James Whitfield</div><div class="tc-role">Hedge Fund Manager, London</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div><p class="tc-text">"The AI signals alone paid for my subscription 10x over. In 6 months on APEX my portfolio is up 84%. I've never had this kind of edge before — it's genuinely game-changing."</p><div class="tc-author"><div class="tc-av" style="background:linear-gradient(135deg,var(--teal),var(--violet));">SA</div><div><div class="tc-name">Sarah Al-Rashid</div><div class="tc-role">Family Office Director, Dubai</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div><p class="tc-text">"I run automated strategies on APEX that generate passive income every week. The bot builder is intuitive, the execution is flawless, and the support team actually knows what they're talking about."</p><div class="tc-author"><div class="tc-av" style="background:linear-gradient(135deg,var(--pink),var(--amber));">MC</div><div><div class="tc-name">Marcus Chen</div><div class="tc-role">Quant Trader, Singapore</div></div></div></div>
+    </div>
+  </section>
+ 
+  <div class="cta-section">
+    <h2 class="cta-h2">Ready to Trade at the Top?</h2>
+    <p class="cta-sub">Join 940,000+ traders who chose APEX. Start free — no credit card required.</p>
+    <button class="hbtn-main" style="font-size:1rem;padding:16px 44px;" onclick="sp('pricing')">Start Free Today →</button>
+  </div>
+ 
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="fg-brand"><div class="fg-logo">APEX</div><p class="fg-desc">The most advanced crypto finance platform ever built. Trusted by 940K+ traders in 42 countries.</p><div class="fg-socs"><a class="fg-soc" href="#">𝕏</a><a class="fg-soc" href="#">in</a><a class="fg-soc" href="#">▶</a><a class="fg-soc" href="#">📱</a></div></div>
+      <div class="fg-col"><h5>Platform</h5><a href="#">Markets</a><a href="#">Dashboard</a><a href="#">Analytics</a><a href="#">API Docs</a></div>
+      <div class="fg-col"><h5>Company</h5><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a><a href="#">Press</a></div>
+      <div class="fg-col"><h5>Legal</h5><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Security</a><a href="#">Compliance</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fb-copy">© 2026 APEX FINANCE. ALL RIGHTS RESERVED.</div>
+      <div class="fb-status"><div class="fb-dot"></div>All Systems Operational</div>
+    </div>
+  </footer>
+</div>
+ 
+<div class="page" id="pm">
+  <div class="markets-header">
+    <div class="mh-top">
+      <div><div style="font-size:0.72rem;color:var(--violet3);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">// Live Markets</div>
+      <h2 class="mh-title">Crypto <span>Markets</span></h2></div>
+      <div class="mh-right">
+        <div class="mfilter">
+          <button class="mf-btn on" onclick="setMF('all',this)">All</button>
+          <button class="mf-btn" onclick="setMF('gainers',this)">🔥 Gainers</button>
+          <button class="mf-btn" onclick="setMF('losers',this)">📉 Losers</button>
+          <button class="mf-btn" onclick="setMF('new',this)">✦ New</button>
+        </div>
+        <div class="msearch">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="msearch" placeholder="Search coins…" oninput="renderCoins()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="coins-grid" id="coins-grid"></div>
+</div>
+ 
+<div class="page" id="pd">
+  <div class="dash-header">
+    <div class="dh-left"><div class="dh-greet">Good morning, Trader 👋</div><div class="dh-title">Mission Control</div></div>
+    <div class="dh-right"><button class="dbtn">Export</button><button class="dbtn">Settings</button><button class="dbtn-v">+ Deposit</button></div>
+  </div>
+  <div class="bento" id="bento-grid"></div>
+</div>
+ 
+<div class="page" id="pp">
+  <div class="pricing-top">
+    <span class="pt-tag">// Simple, Transparent Pricing</span>
+    <h1 class="pt-h1">Choose Your <span>Plan</span></h1>
+    <p class="pt-sub">Start free and scale as you grow. No hidden fees, no lock-in periods, cancel anytime.</p>
+  </div>
+  <div class="p-toggle"><span class="pt-opt on">Monthly</span><span class="pt-opt">Annual</span><span class="pt-save">Save 20%</span></div>
+  <div class="p-grid">
+    <div class="p-card anim">
+      <div class="p-card-top"><div class="p-tier">// STARTER</div><div class="p-price"><sup>$</sup>0<sub>/mo</sub></div><p class="p-desc">Perfect for beginners exploring the world of crypto trading.</p></div>
+      <div class="p-card-body"><ul class="p-feats"><li class="on">5 tracked assets</li><li class="on">Basic market data</li><li class="on">1 portfolio</li><li class="on">Community support</li><li class="off">Advanced charts</li><li class="off">API access</li><li class="off">AI signals</li><li class="off">Dedicated manager</li></ul><button class="p-btn">Start Free</button></div>
+    </div>
+    <div class="p-card featured anim">
+      <div class="p-card-top"><div class="p-hot">Most Popular</div><div class="p-tier">// PRO</div><div class="p-price"><sup>$</sup>99<sub>/mo</sub></div><p class="p-desc">For serious traders who demand professional-grade tools and data.</p></div>
+      <div class="p-card-body"><ul class="p-feats"><li class="on">Unlimited assets</li><li class="on">Real-time institutional data</li><li class="on">10 portfolios + automation</li><li class="on">Advanced charting suite</li><li class="on">Full API access</li><li class="on">AI signals engine</li><li class="on">Priority 24/7 support</li><li class="off">Dedicated manager</li></ul><button class="p-btn feat">Start Pro Trial →</button></div>
+    </div>
+    <div class="p-card anim">
+      <div class="p-card-top"><div class="p-tier">// ELITE</div><div class="p-price"><sup>$</sup>399<sub>/mo</sub></div><p class="p-desc">Institutional tools for funds, family offices, and HNW individuals.</p></div>
+      <div class="p-card-body"><ul class="p-feats"><li class="on">Everything in Pro</li><li class="on">Unlimited portfolios</li><li class="on">Institutional data feeds</li><li class="on">Custom algo strategies</li><li class="on">Dedicated relationship manager</li><li class="on">White-label options</li><li class="on">99.99% SLA uptime</li><li class="on">Legal & compliance support</li></ul><button class="p-btn">Contact Sales</button></div>
+    </div>
+  </div>
+  <div class="faq-section">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is APEX safe to use? <span class="faq-icon">+</span></div><div class="faq-a">Absolutely. 95% of assets are held in HSM cold storage, insured for $500M through Lloyd's of London. We've operated since 2019 with zero security breaches.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I cancel my subscription anytime? <span class="faq-icon">+</span></div><div class="faq-a">Yes, no lock-in periods, no cancellation fees. Cancel from your dashboard settings at any time. Your data is yours forever.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What countries is APEX available in? <span class="faq-icon">+</span></div><div class="faq-a">APEX is available in 42 countries across Europe, North America, Asia-Pacific, and the Middle East, with more regions being added throughout 2026.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do you offer an API? <span class="faq-icon">+</span></div><div class="faq-a">Pro and Elite members get full REST and WebSocket API access. Rate limits of 1,200 req/min with SDKs for Python, Node.js, and Go.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What's the minimum deposit? <span class="faq-icon">+</span></div><div class="faq-a">No minimum for Starter. Pro recommends $1,000+. Elite is designed for portfolios of $100,000 and above, with dedicated onboarding support.</div></div>
+  </div>
+</div>
+ 
+<script src="script.js"></script>
+</body>
+</html>
